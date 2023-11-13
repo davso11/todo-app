@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, TouchableOpacityProps } from "react-native";
-import { MAIN } from "../constants/colors";
+import { MAIN } from "../constants/styles";
 
 interface ButtonProps extends TouchableOpacityProps {
   rounded?: boolean;

@@ -2,20 +2,23 @@ import React from "react";
 import BouncyCheckbox, {
   type IBouncyCheckboxProps,
 } from "react-native-bouncy-checkbox";
-import { MAIN } from "../constants/colors";
+import { Platform } from "react-native";
+import { MAIN } from "../constants/styles";
 
 interface CheckboxProps extends IBouncyCheckboxProps {}
 
 export const Checkbox = React.forwardRef<BouncyCheckbox, CheckboxProps>(
   ({ style, ...props }, ref) => {
+    const size = Platform.OS !== "web" ? 25 : 22;
+
     return (
       <BouncyCheckbox
         ref={ref}
         fillColor={MAIN}
-        size={22}
+        size={size}
         style={[
           {
-            width: 22,
+            width: size,
             borderColor: MAIN,
             padding: 0,
           },

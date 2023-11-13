@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, FlatList, FlatListProps } from "react-native";
-import { BG, LIGHTGRAY, MAIN_DARK } from "../constants/colors";
+import { BG, LIGHTGRAY, BORDER } from "../constants/styles";
 import { Todo } from "../types";
 import { Checkbox } from "./checkbox";
 import { dayjs } from "../lib/dayjs";
@@ -31,38 +31,38 @@ export function TodoList<T extends Todo>({
   ...props
 }: TodoListProps<T>) {
   return (
-    <FlatList
-      style={[styles.list, style]}
-      data={todos}
-      showsVerticalScrollIndicator={false}
-      keyExtractor={({ id }) => id}
-      renderItem={({ item: todo }) => <Task {...todo} />}
-      ItemSeparatorComponent={() => (
-        <View
-          style={{
-            height: 1,
-            width: "100%",
-            backgroundColor: LIGHTGRAY,
-          }}
-        />
-      )}
-      {...props}
-    />
+    <View
+      style={{
+        width: "100%",
+        borderRadius: 12,
+        overflow: "hidden",
+        ...BORDER,
+      }}
+    >
+      <FlatList
+        style={[styles.list, style]}
+        data={todos}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={({ id }) => id}
+        renderItem={({ item: todo }) => <Task {...todo} />}
+        ItemSeparatorComponent={() => (
+          <View
+            style={{
+              height: 1,
+              width: "100%",
+              backgroundColor: LIGHTGRAY,
+            }}
+          />
+        )}
+        {...props}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   list: {
-    width: "100%",
-    borderRadius: 12,
     backgroundColor: BG,
-    shadowColor: MAIN_DARK,
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
   },
   todo: {
     padding: 20,

@@ -4,7 +4,7 @@ import {
   View,
   ViewProps,
 } from "react-native";
-import { MAIN } from "../constants/colors";
+import { MAIN } from "../constants/styles";
 
 interface ScreenLoaderProps extends ViewProps {
   loaderProps?: ActivityIndicatorProps;
