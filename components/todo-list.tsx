@@ -3,16 +3,30 @@ import { BG, LIGHTGRAY, BORDER } from "../constants/styles";
 import { Todo } from "../types";
 import { Checkbox } from "./checkbox";
 import { dayjs } from "../lib/dayjs";
+import { TODO_CATEGORIES } from "../constants/data";
 
 function Task(todo: Todo) {
+  const label = todo.category.label;
+  const category = TODO_CATEGORIES.find((el) => el.label === label);
+
   return (
     <View style={styles.todo}>
-      {/* TODO: Use Image instead of this dummy circle down here */}
-      <View style={styles["todo-circle"]} />
+      <View
+        style={[
+          styles["todo-circle"],
+          {
+            backgroundColor: category ? category.color : LIGHTGRAY,
+            justifyContent: "center",
+            alignItems: "center",
+          },
+        ]}
+      >
+        {category ? category.Icon : null}
+      </View>
       <View style={styles["todo-text-box"]}>
         <Text style={{ fontWeight: "600" }}>{todo.title}</Text>
         <Text style={{ fontSize: 12 }}>
-          {dayjs(todo.targetDate).format("lll")}
+          {dayjs(todo.targetDate).format("ll - LT")}
         </Text>
       </View>
       <Checkbox />
@@ -22,7 +36,7 @@ function Task(todo: Todo) {
 
 interface TodoListProps<T>
   extends Omit<FlatListProps<T>, "data" | "renderItem"> {
-  todos: T[];
+  todos: ReadonlyArray<T>;
 }
 
 export function TodoList<T extends Todo>({
@@ -74,7 +88,6 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 44,
-    backgroundColor: LIGHTGRAY,
   },
   "todo-text-box": {
     flex: 1,
