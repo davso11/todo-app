@@ -12,7 +12,7 @@ function Task(todo: Todo) {
       <View style={styles["todo-text-box"]}>
         <Text style={{ fontWeight: "600" }}>{todo.title}</Text>
         <Text style={{ fontSize: 12 }}>
-          {dayjs(todo.targetDate).format("LT")}
+          {dayjs(todo.targetDate).format("lll")}
         </Text>
       </View>
       <Checkbox />
