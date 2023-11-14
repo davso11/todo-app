@@ -34,53 +34,54 @@ function Home() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles._} />
-
-        <Container style={[styles.container]}>
-          {/* HEADER */}
-          <View style={styles["title-box"]}>
-            <Text style={[styles["title-box-text"], styles.date]}>
-              {dayjs(Date.now()).format("ll")}
-            </Text>
-            <Text style={[styles["title-box-text"], styles.title]}>
-              Mes tâches
-            </Text>
-          </View>
-
-          {/* TODOS */}
-          {todos.length > 0 ? (
-            <TodoList
-              todos={todos}
-              scrollEnabled={false}
-              style={{
-                width: "100%",
-              }}
-            />
-          ) : (
-            <View style={styles["empty-todo-box"]}>
-              <Text>Aucune tâche enregistrée.</Text>
+    <View style={{ flex: 1 }}>
+      <View style={styles._} />
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Container style={[styles.container]}>
+            {/* HEADER */}
+            <View style={styles["title-box"]}>
+              <Text style={[styles["title-box-text"], styles.date]}>
+                {dayjs(Date.now()).format("ll")}
+              </Text>
+              <Text style={[styles["title-box-text"], styles.title]}>
+                Mes tâches
+              </Text>
             </View>
-          )}
-        </Container>
-      </ScrollView>
 
-      {/* NAV BUTTON */}
-      <Link href="/new" asChild style={styles["nav-btn"]}>
-        <Button>
-          <Text
-            style={{
-              fontSize: 16,
-              color: "#fff",
-              fontWeight: "600",
-            }}
-          >
-            Nouvelle tâche
-          </Text>
-        </Button>
-      </Link>
-    </SafeAreaView>
+            {/* TODOS */}
+            {todos.length > 0 ? (
+              <TodoList
+                todos={todos}
+                scrollEnabled={false}
+                style={{
+                  width: "100%",
+                }}
+              />
+            ) : (
+              <View style={styles["empty-todo-box"]}>
+                <Text>Aucune tâche enregistrée.</Text>
+              </View>
+            )}
+          </Container>
+        </ScrollView>
+
+        {/* NAV BUTTON */}
+        <Link href="/new" asChild style={styles["nav-btn"]}>
+          <Button>
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#fff",
+                fontWeight: "600",
+              }}
+            >
+              Nouvelle tâche
+            </Text>
+          </Button>
+        </Link>
+      </SafeAreaView>
+    </View>
   );
 }
 
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
   },
   "nav-btn": {
     position: "absolute",
-    bottom: 16,
+    bottom: 24,
     left: 16,
     right: 16,
     marginHorizontal: "auto",
