@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { View, Text, StyleSheet, FlatList, FlatListProps } from "react-native";
 import { BG, LIGHTGRAY, BORDER } from "../constants/styles";
 import { Todo } from "../types";
@@ -7,7 +8,12 @@ import { TODO_CATEGORIES } from "../constants/data";
 
 function Task(todo: Todo) {
   const label = todo.category.label;
-  const category = TODO_CATEGORIES.find((el) => el.label === label);
+  const formatedDate = useMemo(() => {
+    return dayjs(todo.targetDate).format("ll - LT");
+  }, []);
+  const category = useMemo(() => {
+    return TODO_CATEGORIES.find((el) => el.label === label);
+  }, []);
 
   return (
     <View style={styles.todo}>
@@ -25,9 +31,7 @@ function Task(todo: Todo) {
       </View>
       <View style={styles["todo-text-box"]}>
         <Text style={{ fontWeight: "600" }}>{todo.title}</Text>
-        <Text style={{ fontSize: 12 }}>
-          {dayjs(todo.targetDate).format("ll - LT")}
-        </Text>
+        <Text style={{ fontSize: 12 }}>{formatedDate}</Text>
       </View>
       <Checkbox />
     </View>
