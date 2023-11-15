@@ -6,8 +6,14 @@ import {
 } from "react-native";
 import { MAIN } from "../constants/styles";
 
+interface LoaderProps extends ActivityIndicatorProps {}
+
+export function Loader({ size, ...props }: LoaderProps) {
+  return <ActivityIndicator color={MAIN} {...props} />;
+}
+
 interface ScreenLoaderProps extends ViewProps {
-  loaderProps?: ActivityIndicatorProps;
+  loaderProps?: LoaderProps;
 }
 
 export function ScreenLoader({
@@ -26,7 +32,7 @@ export function ScreenLoader({
       ]}
       {...viewProps}
     >
-      <ActivityIndicator size={20} color={MAIN} {...loaderProps} />
+      <Loader {...loaderProps} />
     </View>
   );
 }
