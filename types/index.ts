@@ -1,6 +1,8 @@
 export type TodoCategory = {
   id: number;
   label: string;
+  color: string;
+  iconPath: string;
 };
 
 export type Todo = {

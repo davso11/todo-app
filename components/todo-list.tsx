@@ -1,18 +1,20 @@
 import { useMemo } from "react";
-import { View, Text, StyleSheet, FlatList, FlatListProps } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  FlatListProps,
+  Image,
+} from "react-native";
 import { BG, LIGHTGRAY, BORDER } from "../constants/styles";
 import { Todo } from "../types";
 import { Checkbox } from "./checkbox";
 import { dayjs } from "../lib/dayjs";
-import { TODO_CATEGORIES } from "../constants/data";
 
 function Task(todo: Todo) {
-  const label = todo.category.label;
   const formatedDate = useMemo(() => {
     return dayjs(todo.targetDate).format("ll - LT");
-  }, []);
-  const category = useMemo(() => {
-    return TODO_CATEGORIES.find((el) => el.label === label);
   }, []);
 
   return (
@@ -21,13 +23,21 @@ function Task(todo: Todo) {
         style={[
           styles["todo-circle"],
           {
-            backgroundColor: category ? category.color : LIGHTGRAY,
+            backgroundColor: todo.category.color,
             justifyContent: "center",
             alignItems: "center",
           },
         ]}
       >
-        {category ? category.Icon : null}
+        <Image
+          source={{ uri: todo.category.iconPath }}
+          resizeMode="cover"
+          style={{
+            width: 22,
+            height: 22,
+            borderRadius: 44,
+          }}
+        />
       </View>
       <View style={styles["todo-text-box"]}>
         <Text style={{ fontWeight: "600" }}>{todo.title}</Text>
