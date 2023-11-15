@@ -125,8 +125,8 @@ const styles = StyleSheet.create({
   "nav-btn": {
     position: "absolute",
     bottom: 28,
-    left: 20,
-    right: 20,
+    left: 12,
+    right: 12,
     marginHorizontal: "auto",
   },
   "empty-todo-box": {
