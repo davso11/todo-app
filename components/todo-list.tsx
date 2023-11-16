@@ -1,12 +1,5 @@
 import { useMemo } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  FlatListProps,
-  Image,
-} from "react-native";
+import { View, Text, StyleSheet, FlatList, FlatListProps } from "react-native";
 import { BG, LIGHTGRAY, BORDER } from "../constants/styles";
 import { Todo } from "../types";
 import { Checkbox } from "./checkbox";
@@ -19,26 +12,6 @@ function Task(todo: Todo) {
 
   return (
     <View style={styles.todo}>
-      <View
-        style={[
-          styles["todo-circle"],
-          {
-            backgroundColor: todo.category.color,
-            justifyContent: "center",
-            alignItems: "center",
-          },
-        ]}
-      >
-        <Image
-          source={{ uri: todo.category.iconPath }}
-          resizeMode="cover"
-          style={{
-            width: 22,
-            height: 22,
-            borderRadius: 44,
-          }}
-        />
-      </View>
       <View style={styles["todo-text-box"]}>
         <Text style={{ fontWeight: "600" }}>{todo.title}</Text>
         <Text style={{ fontSize: 12 }}>{formatedDate}</Text>
@@ -97,11 +70,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     columnGap: 12,
-  },
-  "todo-circle": {
-    width: 44,
-    height: 44,
-    borderRadius: 44,
   },
   "todo-text-box": {
     flex: 1,

@@ -1,5 +1,5 @@
 import { axiosInstance } from "../../lib/axios";
-import { Todo, TodoCategory } from "../../types";
+import { Todo } from "../../types";
 
 const TODOS_BASE_URI = "/api/tasks";
 const CATEGORIES_BASE_URI = "/api/task-categories";
@@ -11,11 +11,4 @@ export async function getTodos(userId: string) {
   });
   if (status !== 200) throw data; // error
   return data as Todo[];
-}
-
-// TODO CATEGORIES
-export async function getCategories() {
-  const { data, status } = await axiosInstance.get(CATEGORIES_BASE_URI);
-  if (status !== 200) throw data; // error
-  return data as TodoCategory[];
 }
