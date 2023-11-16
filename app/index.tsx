@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   "nav-btn": {
     position: "absolute",
-    bottom: 28,
+    bottom: 16,
     left: 12,
     right: 12,
     marginHorizontal: "auto",
