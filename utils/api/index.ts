@@ -1,8 +1,7 @@
 import { axiosInstance } from "../../lib/axios";
-import { Todo } from "../../types";
+import { PostTodo, Todo } from "../../types";
 
 const TODOS_BASE_URI = "/api/tasks";
-const CATEGORIES_BASE_URI = "/api/task-categories";
 
 // TODOS
 export async function getTodos(userId: string) {
@@ -11,4 +10,11 @@ export async function getTodos(userId: string) {
   });
   if (status !== 200) throw data; // error
   return data as Todo[];
+}
+
+export async function postTodo(todo: PostTodo) {
+  const url = `${TODOS_BASE_URI}/new`;
+  const { data, status } = await axiosInstance.post(url, todo);
+  if (status !== 201) throw data; // error
+  return data as Todo;
 }
