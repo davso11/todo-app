@@ -76,7 +76,7 @@ export default function NewTodo() {
           `${date?.toISOString().slice(0, 10)} ${time?.toISOString().slice(11)}`
         ),
         userId: "c04ea068-22c1-4003-8a7c-f7fd209eb227",
-        note,
+        note: note ?? null,
       });
       await save(todo, {
         async onSuccess(newTodo) {
