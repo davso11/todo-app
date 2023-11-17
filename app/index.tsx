@@ -8,7 +8,6 @@ import { Button } from "../components/button";
 import { useTodos } from "../hooks/api";
 import { ScreenLoader } from "../components/screen-loader";
 import { dayjs } from "../lib/dayjs";
-// import { DUMMY_TODOS } from "../constants/data";
 
 const { height: deviceHeight } = Dimensions.get("window");
 
